@@ -1,0 +1,29 @@
+* Forecast
+
+ This repo contains a semi-randomly evolving app for doing weather forecasts.
+ The main aim is to do some concrete work with different Clojure APIs in order
+ to learn some more of it. 
+
+ As such, it's not meant to be really usable, but rather a meaningful and
+ minimalistic playground for me. Should it ever become actually useful, you're
+ welcome to use it :)
+
+ As of now, there's just a few functions to play with in the REPL. The plans
+ include the creation of a REST API, and further down the line, the addition of
+ a clojurescript app for displaying the forecast data in a nice way.
+
+** Note on API keys
+
+   Since I'm not keen on getting my own API keys on github, I've =.gitignore='d
+   the keys.clj file (which is required for this to work at all). The file
+   requires (so far) API keys for google maps, flickr, and darksky.net. The
+   =keys.clj= file should contain the following.
+
+#+BEGIN_SRC clojure
+(ns forecast.keys)
+
+(def darksky-key "YOUR-KEY-HERE")
+(def gmaps-key "YOUR-KEY-HERE")
+(def flickr-key "YOUR-KEY-HERE")
+(def flickr-secret "YOUR-SECRET-HERE")
+#+END_SRC
