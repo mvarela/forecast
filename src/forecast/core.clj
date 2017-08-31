@@ -2,7 +2,6 @@
   (:require [forecast.keys :as apikeys]
             [clj-http.client :as client]
             [clojure.data.json :as json]
-            [clojure.core.async :as async]
             [clj-time.core :as time]
             [clojure.core.memoize :as memo]))
 
