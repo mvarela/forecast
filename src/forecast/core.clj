@@ -86,3 +86,23 @@
     {:forecast forecast :pic-url @url}))
 
 
+(defmacro partial-forecast
+  "Builds a partial forecast for current, hourly, or daily predictions.
+  The type should be specified by a keyword, such as :daily"
+  [city country ftype]
+  `(let [city# ~city
+         country# ~country
+         type# ~ftype
+         sym# ((comp symbol name) type#)]
+     (if (contains? #{:currently :hourly :daily} type#)
+           (let [full-fcast# (do-forecast city# country#)
+                  fcast# (:forecast full-fcast#)
+                  pic#   (:pic-url full-fcast#)
+                  tz#    (get-in fcast# [:timezone] )
+                  time#  (get-in fcast# [:currently :time])
+                  sym#  (get-in fcast# [type#])]
+              (merge sym# {:city city# :country country# :timezone tz# :updated-time time# :pic-url pic#}))
+           {})))
+
+
+
